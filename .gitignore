@@ -25,3 +25,6 @@ venv/
 
 # Anaconda
 anaconda_projects/
+data/raw/appearances.csv
+data/FullShotsData.csv
+data/raw/FullShotsData.csv
