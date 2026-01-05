@@ -170,8 +170,8 @@ football-superstar-prediction/
 Data Analytics | Football Analytics  
 Building at the intersection of data and sport
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/YOUR_LINKEDIN)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/YOUR_USERNAME)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/daleconaghan)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/daleconaghan)
 
 ---
 
