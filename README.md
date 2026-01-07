@@ -1,192 +1,172 @@
-# ⚽ Football Superstar Prediction
+# DC Pro: Next-Gen Football Scouting Intelligence
 
-**Using machine learning to identify the next generation of football superstars**
+A data-driven talent identification system that uses machine learning to predict which young footballers are most likely to become elite players.
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-orange.svg)](https://scikit-learn.org)
-[![Pandas](https://img.shields.io/badge/Pandas-Data-green.svg)](https://pandas.pydata.org)
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
----
+## Overview
 
-## 🎯 Project Overview
+DC Pro analyses performance data from Europe's top 5 leagues to identify high-potential U24 players before they break out. Unlike traditional scouting metrics that focus on goals and assists, the **DC Index** uses empirically-derived weights trained on historical breakout data.
 
-This project builds an **ensemble machine learning model** to predict which young football players (ages 16-24) have the highest probability of becoming superstars. Using 2024-2025 season data from Europe's Big 5 leagues, the model analyzes performance metrics to identify breakout potential.
+### Key Features
 
-### Key Results
+- **DC Index** — Proprietary potential score based on metrics that actually predict breakouts
+- **Market Valuations** — Multi-factor estimates incorporating age, position, league, and form
+- **DNA Matcher** — Find statistical clones of any player
+- **Head-to-Head Analysis** — Compare prospects side-by-side with radar charts
+- **Portfolio Tracker** — Build and monitor a shortlist of targets
 
-| Player | Age | Club | Superstar Probability |
-|--------|-----|------|----------------------|
-| 🥇 Florian Wirtz | 21 | Bayer Leverkusen | **95.5%** |
-| 🥈 Lamine Yamal | 17 | Barcelona | **94.6%** |
-| 🥉 Xavi Simons | 21 | RB Leipzig | **93.2%** |
-| Jude Bellingham | 21 | Real Madrid | **90.5%** |
-| Pedri | 21 | Barcelona | **89.7%** |
-
-> **The model's validation:** Players like Bellingham, Pedri, and Wirtz — already considered elite — score highest, demonstrating the model captures real superstar indicators.
-
----
-
-## 📊 Featured Visualizations
-
-### Top Predicted Superstars
-![Top Superstars](visualizations/top_superstars.png)
-
-### Feature Importance (What Makes a Superstar?)
-![Feature Importance](visualizations/feature_importance.png)
-
-### Model Performance
-![Model Performance](visualizations/model_performance.png)
-
----
-
-## 🔬 Methodology
-
-### Data Sources
-- **Primary:** FBref Big 5 European Leagues player statistics (2024-2025 season)
-- **Coverage:** Premier League, La Liga, Bundesliga, Serie A, Ligue 1
-- **Sample:** 2,500+ players, filtered to ages 16-24
-
-### Features Used
-
-| Category | Metrics |
-|----------|---------|
-| **Scoring** | Goals/90, xG/90, Non-penalty xG |
-| **Creating** | Assists/90, xA/90, Key Passes |
-| **Progression** | Progressive Carries, Progressive Passes |
-| **Playing Time** | Minutes Played, % of Team Minutes |
-| **Efficiency** | Goals vs xG Performance, Shot Accuracy |
-
-### Model Architecture
-
-```
-Ensemble Model
-├── Random Forest Classifier (n=300)
-├── Gradient Boosting Classifier
-├── Logistic Regression
-└── Final: Weighted Average Probability
-```
-
-**Why Ensemble?** Single models can overfit to specific patterns. The ensemble approach reduces variance and produces more reliable probability estimates.
-
----
-
-## 🔍 Key Insights
-
-### 1. Age Sweet Spot
-Players aged **19-21** show the highest prediction accuracy — old enough to have meaningful stats, young enough for trajectory analysis.
-
-### 2. Most Predictive Features
-1. **Goals + Assists per 90** — Raw output matters
-2. **Progressive Actions** — Players who drive play forward
-3. **Minutes Played** — Coaches trust future stars with playing time
-4. **xG Outperformance** — Clinical finishing separates elite from good
-
-### 3. Position-Specific Patterns
-- **Forwards:** Goals/90 and shot volume are key
-- **Midfielders:** Progressive passes and assist potential matter more
-- **Defenders:** Appearing in "superstar" predictions requires exceptional attacking contribution
-
----
-
-## 🚀 Quick Start
+## Installation
 
 ### Prerequisites
-```bash
-pip install pandas numpy scikit-learn matplotlib seaborn jupyter
-```
 
-### Run the Analysis
+- Python 3.9+
+- pip
+
+### Setup
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/football-superstar-prediction.git
+# Clone the repository
+git clone https://github.com/daleconaghan/football-superstar-prediction.git
 cd football-superstar-prediction
-jupyter notebook notebooks/analysis.ipynb
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the pipeline to generate predictions
+python pipeline.py
+
+# Launch the dashboard
+streamlit run football.py
 ```
 
-### Try the Interactive Dashboard
-```bash
-pip install streamlit plotly
-streamlit run app.py
+### Dependencies
+
+```
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+plotly>=5.18.0
+scikit-learn>=1.3.0
 ```
 
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 football-superstar-prediction/
-├── 📊 notebooks/
-│   ├── analysis.ipynb              # Main analysis notebook
-│   ├── analysis_wonderkids.ipynb   # Young player deep-dive
-│   └── scouting_report_2024.ipynb  # Current season scouting
-├── 📈 visualizations/
-│   ├── top_superstars.png          # Top predictions chart
-│   ├── feature_importance.png      # What drives predictions
-│   └── model_performance.png       # Model accuracy metrics
-├── 💾 data/
-│   ├── raw/                        # Original data files
-│   └── processed/                  # Model outputs & predictions
-├── 🐍 src/
-│   └── download_data.py            # Data utilities
-├── 🖥️ app.py                       # Streamlit dashboard
+├── football.py                 # Streamlit dashboard (main app)
+├── pipeline.py                 # Data processing and DC Index calculation
+├── train_weights_simple.py     # Empirical weight training script
+├── empirical_weights.py        # Trained model coefficients
+├── data/
+│   ├── raw/                    # FBRef source data (2021-2026)
+│   └── processed/              # Pipeline output
 ├── requirements.txt
 └── README.md
 ```
 
----
+## Methodology
 
-## 📋 Results Files
+### Data Sources
 
-| File | Description |
-|------|-------------|
-| `final_predictions.csv` | All young players with superstar probability scores |
-| `scouting_report_2024.csv` | Top 50 prospects for 2024-25 season |
-| `multiseason_predictions.csv` | Tracking predictions across seasons |
+- **Source:** FBRef.com (via StatsBomb)
+- **Coverage:** Premier League, La Liga, Bundesliga, Serie A, Ligue 1
+- **Seasons:** 2021-22 through 2025-26
+- **Sample:** 14,229 player-seasons; 1,599 U23 players with 500+ minutes
 
----
+### DC Index Training
 
-## 🔮 Future Improvements
+The DC Index weights were derived using logistic regression on historical data:
 
-- [ ] Add historical validation (did past predictions come true?)
-- [ ] Include market value data for ROI predictions
-- [ ] Build automated weekly data refresh
-- [ ] Add player similarity/comparison feature
-- [ ] Expand to women's football leagues
+1. Filtered to U23 players with 500+ minutes played
+2. Labelled known "breakout" players (Bellingham, Saka, Musiala, Pedri, etc.)
+3. Trained position-specific models to identify predictive features
+4. Extracted coefficients as empirical weights
 
----
+### Learned Weights
 
-## 🛠️ Tech Stack
+| Position | Top Predictors |
+|----------|----------------|
+| **Forward** | Progressive Carries (+2.21), xAG (+1.90), xG (+1.73) |
+| **Midfielder** | Progressive Passes (+1.19), Progressive Carries (+0.82), Key Passes (+0.61) |
+| **Defender** | Progressive Passes (+2.00), Tackles (+1.52), Age (-0.52) |
 
-- **Data Processing:** pandas, numpy
-- **Machine Learning:** scikit-learn
-- **Visualization:** matplotlib, seaborn, plotly
-- **Dashboard:** Streamlit
-- **Feature Importance:** SHAP values
+**Key Finding:** Progressive ball movement is the strongest predictor across all positions.
 
----
+### Market Valuation Model
 
-## 👤 Author
+Estimated values incorporate six factors:
 
-**Dale Conaghan**  
-Data Analytics | Football Analytics  
-Building at the intersection of data and sport
+| Factor | Impact |
+|--------|--------|
+| DC Index | Base potential score |
+| Age | U19: +50%, U22: +20%, 25+: -20% |
+| League | Premier League: +50%, Top 4 leagues: +20% |
+| Position | Forward: +25%, Midfielder: +10%, Defender: -10%, GK: -30% |
+| Minutes | 2500+: +10%, <500: -40% (sample size confidence) |
+| Form | Outperforming xG: up to +15% |
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/daleconaghan)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/daleconaghan)
+### Proprietary Metrics
 
----
+- **Finishing Alpha:** Goals − xG (clinical finishing ability)
+- **Ghost Factor:** SCA / Touches × 100 (efficiency per touch)
+- **Progression Score:** (PrgC + PrgP) / 90s (ball advancement)
 
-## 📜 License
+## Usage
 
-This project is for educational and portfolio purposes. Data sourced from publicly available statistics.
+### Running the Dashboard
 
----
+```bash
+streamlit run football.py
+```
 
-## 🙏 Acknowledgments
+Navigate to `http://localhost:8501` in your browser.
 
-- [FBref](https://fbref.com) for comprehensive football statistics
-- [StatsBomb](https://statsbomb.com) for open data initiatives
-- The football analytics community for inspiration and methods
+### Regenerating Predictions
 
----
+To update predictions with new data:
 
-*If you found this interesting, give it a ⭐ and let's connect!*
+```bash
+# Place new FBRef data in data/raw/
+python pipeline.py
+```
+
+### Retraining Weights
+
+To retrain the DC Index weights on updated historical data:
+
+```bash
+python train_weights_simple.py
+```
+
+## Limitations
+
+- No contract length data (significantly affects real transfer fees)
+- Limited goalkeeper metrics in source data
+- No injury history or fitness data
+- Market valuations are heuristic, not trained on actual fees
+- In-sample training — true predictive accuracy would require out-of-sample validation
+
+## Future Work
+
+- [ ] Scrape Transfermarkt for actual transfer fees to train valuation model
+- [ ] Add contract expiry data
+- [ ] Incorporate season-over-season trajectory
+- [ ] Expand to more leagues (Eredivisie, Liga Portugal, Championship)
+- [ ] Deploy to Streamlit Cloud
+
+## Author
+
+**Dale Conaghan**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [FBRef](https://fbref.com/) for comprehensive football statistics
+- [StatsBomb](https://statsbomb.com/) for advanced metrics
+- [Streamlit](https://streamlit.io/) for the dashboard framework
