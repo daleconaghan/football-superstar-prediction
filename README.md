@@ -155,8 +155,8 @@ python train_weights_simple.py
 - [ ] Add contract expiry data
 - [ ] Incorporate season-over-season trajectory
 - [ ] Expand to more leagues (Eredivisie, Liga Portugal, Championship)
-- [ ] Deploy to Streamlit Cloud
-
+- ~~Deploy to Streamlit Cloud~~ ✅ **DEPLOYED**
+  
 ## Author
 
 **Dale Conaghan**
