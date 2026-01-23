@@ -6,6 +6,11 @@ A data-driven talent identification system that uses machine learning to predict
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
+## 🚀 Live Demo
+
+**[View Live Application →](https://dc-football-scout.streamlit.app/)**
+
+
 ## Overview
 
 DC Pro analyses performance data from Europe's top 5 leagues to identify high-potential U24 players before they break out. Unlike traditional scouting metrics that focus on goals and assists, the **DC Index** uses empirically-derived weights trained on historical breakout data.
